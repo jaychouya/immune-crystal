@@ -1,0 +1,21 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - IMMUNE_CRYSTAL_DATA=/app/data
+      - IMMUNE_CRYSTAL_LLM=stub
+
+  web:
+    build:
+      context: ./web
+      dockerfile: ../docker/web.Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - api
