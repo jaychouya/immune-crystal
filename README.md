@@ -14,7 +14,11 @@ General-purpose Enterprise AI Immune-Memory Symbiote: a defensive memory layer t
 
 ## One-Minute Demo
 
-![immune-crystal demo](./assets/demo/immune-crystal-demo.gif)
+Demo GIF coming soon.
+
+- Planned path: `assets/demo/immune-crystal-demo.gif`
+- Current quick try: run `python examples/generic/bootstrap_and_chat.py`
+- If you want to add your own GIF, record the dashboard flow and save to the path above.
 
 ## What You Get
 
