@@ -1,5 +1,6 @@
 # immune-crystal
 
+[![CI](https://github.com/jaychouya/immune-crystal/actions/workflows/ci.yml/badge.svg)](https://github.com/jaychouya/immune-crystal/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
@@ -16,12 +17,24 @@
 
 ![immune-crystal demo](./assets/demo/immune-crystal-demo.gif)
 
+流程示意（约 60 秒）。本地复现：`python examples/generic/bootstrap_and_chat.py`。重新生成 GIF：`pip install -e ".[dev]"` 后执行 `python scripts/generate_demo_gif.py`。完整录制说明见 [`assets/demo/README.md`](./assets/demo/README.md)。
+
 ## 你会得到什么
 
 - 任意领域隔离（`customer_support`、`engineering`、`hr`、`finance` 等）
 - 跨域泄露与提示词注入拦截
 - 周期强化可信记忆、衰减噪声记忆
 - 每次响应返回审计信号：`purity`、`lineage`、`audit_id`
+
+## 可信度信号
+
+| 信号 | 位置 |
+| --- | --- |
+| 法律可用性 | [`LICENSE`](./LICENSE) |
+| 安全披露流程 | [`SECURITY.md`](./SECURITY.md) |
+| 贡献规范 | [`CONTRIBUTING.md`](./CONTRIBUTING.md) |
+| 版本变更 | [`CHANGELOG.md`](./CHANGELOG.md) |
+| 企业 PoC 检查清单 | [`docs/enterprise-evaluation.md`](./docs/enterprise-evaluation.md) |
 
 ## 为什么做这个
 
@@ -129,6 +142,13 @@ python benchmarks/audit_latency.py
 - 跨团队 RAG 访问保护层
 - 长任务 Agent 记忆治理层
 - 合规审计证据层
+
+## 信任与治理
+
+- 安全报告：[`SECURITY.md`](./SECURITY.md)
+- 企业评估：[`docs/enterprise-evaluation.md`](./docs/enterprise-evaluation.md)
+- 演示录制指南：[`assets/demo/README.md`](./assets/demo/README.md)
+- 截图占位指南：[`assets/screenshots/README.md`](./assets/screenshots/README.md)
 
 ## Roadmap
 

@@ -1,5 +1,6 @@
 ﻿# immune-crystal
 
+[![CI](https://github.com/jaychouya/immune-crystal/actions/workflows/ci.yml/badge.svg)](https://github.com/jaychouya/immune-crystal/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
@@ -14,11 +15,9 @@ General-purpose Enterprise AI Immune-Memory Symbiote: a defensive memory layer t
 
 ## One-Minute Demo
 
-Demo GIF coming soon.
+![immune-crystal demo](./assets/demo/immune-crystal-demo.gif)
 
-- Planned path: `assets/demo/immune-crystal-demo.gif`
-- Current quick try: run `python examples/generic/bootstrap_and_chat.py`
-- If you want to add your own GIF, record the dashboard flow and save to the path above.
+Storyboard walkthrough (~60s). To reproduce locally: `python examples/generic/bootstrap_and_chat.py`. Regenerate GIF: `pip install -e ".[dev]"` then `python scripts/generate_demo_gif.py`. Full recording checklist: [`assets/demo/README.md`](./assets/demo/README.md).
 
 ## What You Get
 
@@ -26,6 +25,16 @@ Demo GIF coming soon.
 - Cross-domain leakage and prompt-injection interception
 - Periodic memory reinforcement and noise decay
 - Full audit signals on each response: `purity`, `lineage`, `audit_id`
+
+## Proof Signals
+
+| Signal | Where |
+| --- | --- |
+| Legal use | [`LICENSE`](./LICENSE) |
+| Security disclosure | [`SECURITY.md`](./SECURITY.md) |
+| Contribution path | [`CONTRIBUTING.md`](./CONTRIBUTING.md) |
+| Release history | [`CHANGELOG.md`](./CHANGELOG.md) |
+| Enterprise PoC checklist | [`docs/enterprise-evaluation.md`](./docs/enterprise-evaluation.md) |
 
 ## Comparison (vs RAG / Guardrails)
 
@@ -36,6 +45,40 @@ Demo GIF coming soon.
 | Long-session memory self-repair | Weak | None | Strong |
 | Conflict-state handling | Weak | Rule-based | Dynamic quarantine phase |
 | Output traceability | Medium | Medium | Strong (`purity` + `lineage`) |
+
+## 5-Minute Integration
+
+### 1) Inject domain knowledge
+
+```bash
+curl -X POST "http://localhost:8000/inject" \
+  -H "Content-Type: application/json" \
+  -d "{\"content\":\"Support can only use public docs and authorized tickets.\",\"domain\":\"customer_support\",\"compliance_tags\":[\"support-policy\",\"least-privilege\"]}"
+```
+
+### 2) Query through immune layer
+
+```bash
+curl -X POST "http://localhost:8000/chat" \
+  -H "Content-Type: application/json" \
+  -d "{\"query\":\"Can support access engineering release keys?\",\"domain\":\"customer_support\"}"
+```
+
+### 3) Observe governance state
+
+```bash
+curl "http://localhost:8000/domains"
+curl "http://localhost:8000/crystal/state"
+curl "http://localhost:8000/audit"
+```
+
+### Optional: bootstrap multiple domains
+
+```bash
+curl -X POST "http://localhost:8000/bootstrap" \
+  -H "Content-Type: application/json" \
+  -d "{\"items\":[{\"domain\":\"customer_support\",\"content\":\"Support can only use public docs.\"},{\"domain\":\"engineering\",\"content\":\"Engineering tokens are sensitive.\"}]}"
+```
 
 ## Quick Start
 
@@ -85,6 +128,13 @@ python benchmarks/audit_latency.py
 - Agent memory governor for long-running workflows
 - Compliance evidence layer in regulated environments
 
+## Trust and Governance
+
+- Security reporting: [`SECURITY.md`](./SECURITY.md)
+- Enterprise evaluation: [`docs/enterprise-evaluation.md`](./docs/enterprise-evaluation.md)
+- Demo asset guide: [`assets/demo/README.md`](./assets/demo/README.md)
+- Screenshot guide: [`assets/screenshots/README.md`](./assets/screenshots/README.md)
+
 ## Roadmap
 
 - [ ] Domain profile import/export
@@ -92,3 +142,9 @@ python benchmarks/audit_latency.py
 - [ ] Streaming API and async workers
 - [ ] Multi-tenant dashboard
 - [ ] Larger benchmark datasets
+
+## Contributing
+
+- Read [`CONTRIBUTING.md`](./CONTRIBUTING.md)
+- Open issues with scenario, expected behavior, and sample payload
+- Add reproducible benchmark/test for major logic changes
